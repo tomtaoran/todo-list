@@ -10,6 +10,11 @@ body {
     /* 
     section> div is also <section><div></div>...</section>
     */
+button{
+  margin-left:1rem;
+  margin-right: 1rem;
+}
+
 
 section > div {
     width: 80%;

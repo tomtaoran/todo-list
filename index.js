@@ -4,18 +4,11 @@ const promoteList={}
 let todoListCounter = 0;
 const storedList= document.querySelector('#storedList')
 
-
-function renderColor(color){
-    const div=document.createElement('div');
-    div.style.backgroundColor=color;
-    div.style.width = '100px';
-    div.style.height = '50px';
-    return div
-}
-
 function renderListItem(label, value){
     const item = document.createElement('li')
     item.innerHTML = `${value}`
+    const space = document.createTextNode("   ")
+    item.appendChild(space);
     const promoteButton = document.createElement("button");
     promoteButton.setAttribute("class",label)
     promoteButton.innerHTML = "promote";
@@ -72,22 +65,4 @@ function handleSubmit(ev){
    // And then appendChild to each item
     storedList.appendChild(renderList(todoList))
 }
-function changeAppearance(ev){
-    ev.preventDefault()
-    const f= ev.target
-    const heading = document.querySelector('.reverse')
-    const str= heading.textContent
-    const person ={
-        name: f.personName.value,
-        favoriteColor: renderColor(f.favoriteColor.value).outerHTML,
-        age: f.age.value,
-    }
-    details.appendChild(renderList(person))
-   
-    heading.style.color = colorToHex(f.colorRed.value,f.colorGreen.value,f.colorBlue.value);
-  
-}
 inputForm.addEventListener('submit', handleSubmit) 
-
-//personForm.addEventListener('submit', changeAppearance)
-
