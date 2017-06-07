@@ -1,5 +1,6 @@
 const inputForm = document.querySelector('#inputForm')
 const todoList = {}
+let todoListCounter = 0;
 const storedList= document.querySelector('#storedList')
 function renderColor(color){
     const div=document.createElement('div');
@@ -11,13 +12,14 @@ function renderColor(color){
 
 function renderListItem(label, value){
     const item = document.createElement('li')
-    item.innerHTML = `${label}: ${value}`
+    item.innerHTML = `${value}`
     return item
 }
 function renderList(data){
     const list = document.createElement('ol')
 
-    Object.keys(data).map(function(label){
+
+    Object.keys(data).reverse().map(function(label){
         const item =renderListItem(label,data[label])
         list.appendChild(item)
     })
@@ -27,7 +29,8 @@ function renderList(data){
 function handleSubmit(ev){
     ev.preventDefault() //just to stop the default refresh
     const f= ev.target
-    const title = f.title.value
+    const title = todoListCounter
+    todoListCounter= todoListCounter+1
     const content = f.content.value
     todoList[title]=content 
     //Rerender by clear the storedList div first
