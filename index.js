@@ -7,8 +7,6 @@ const storedList= document.querySelector('#storedList')
 function renderListItem(label, value){
     const item = document.createElement('li')
     item.innerHTML = `${value}`
-    const space = document.createTextNode("   ")
-    item.appendChild(space);
     const promoteButton = document.createElement("button");
     promoteButton.setAttribute("class",label)
     promoteButton.innerHTML = "promote";
